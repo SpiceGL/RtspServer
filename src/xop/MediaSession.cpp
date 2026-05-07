@@ -203,7 +203,11 @@ bool MediaSession::HandleFrame(MediaChannelId channel_id, AVFrame frame)
 	std::lock_guard<std::mutex> lock(mutex_);
 
 	if(media_sources_[channel_id]) {
-		media_sources_[channel_id]->HandleFrame(channel_id, frame);
+		bool ret = media_sources_[channel_id]->HandleFrame(channel_id, frame);
+		if (!ret) {
+			printf("Failed to handle frame for channel %d\n", channel_id);
+			return false;
+		}
 	}
 	else {
 		return false;

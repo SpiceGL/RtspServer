@@ -17,6 +17,7 @@
 #include "H265Source.h"
 #include "VP8Source.h"
 #include "G711ASource.h"
+#include "G711USource.h"
 #include "AACSource.h"
 #include "MediaSource.h"
 #include "net/Socket.h"
